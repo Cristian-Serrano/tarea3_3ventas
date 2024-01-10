@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 public class ClienteService {
 
     @Autowired
-    private ClienteDAO clienteDAO;
+    private ClienteDAO clienteDAO;a
 }
