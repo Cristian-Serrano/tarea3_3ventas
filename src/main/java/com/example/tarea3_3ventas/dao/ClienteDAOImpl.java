@@ -81,24 +81,30 @@ public class ClienteDAOImpl implements ClienteDAO{
 
     @Override
     public void update(Cliente cliente) {
-        List<Cliente> listClientes = jdbcTemplate.query(
-                "SELECT * FROM cliente",
-                (rs, rowNum) -> new Cliente(rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("apellido1"),
-                        rs.getString("apellido2"),
-                        rs.getString("ciudad"),
-                        rs.getInt("categoría")
-                )
-        );
+        int rows = jdbcTemplate.update("""
+										UPDATE cliente SET 
+														nombre = ?, 
+														apellido1 = ?, 
+														apellido2 = ?,
+														ciudad = ?,
+														categoría = ?  
+												WHERE id = ?
+										""", cliente.getNombre()
+                , cliente.getApellido1()
+                , cliente.getApellido2()
+                , cliente.getCiudad()
+                , cliente.getCategoria()
+                , cliente.getId());
 
-        log.info("Devueltos {} registros.", listClientes.size());
+        log.info("Update de Cliente con {} registros actualizados.", rows);
 
-        return listClientes;
     }
 
     @Override
     public void delete(long id) {
 
+        int rows = jdbcTemplate.update("DELETE FROM cliente WHERE id = ?", id);
+
+        log.info("Delete de Cliente con {} registros eliminados.", rows);
     }
 }
