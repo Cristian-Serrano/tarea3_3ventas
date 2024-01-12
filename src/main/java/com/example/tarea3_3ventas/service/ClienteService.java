@@ -1,45 +1,48 @@
+package com.example.tarea3_3ventas.service;
+
 import java.util.List;
 import java.util.Optional;
 
+import com.example.tarea3_3ventas.dao.ClienteDAO;
 import com.example.tarea3_3ventas.domain.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClienteServicio {
+public class ClienteService {
 
     @Autowired
-    private FabricanteDAO fabricanteDAO;
+    private ClienteDAO clienteDAO;
 
     public List<Cliente> listAll() {
 
-        return fabricanteDAO.getAll();
+        return clienteDAO.getAll();
 
     }
 
     public Cliente one(Integer id) {
-        Optional<Cliente> optFab = fabricanteDAO.find(id);
+        Optional<Cliente> optFab = clienteDAO.find(id);
         if (optFab.isPresent())
             return optFab.get();
         else
             return null;
     }
 
-    public void newFabricante(Cliente cliente) {
+    public void create(Cliente cliente) {
 
-        fabricanteDAO.create(cliente);
-
-    }
-
-    public void replaceFabricante(Cliente cliente) {
-
-        fabricanteDAO.update(cliente);
+        clienteDAO.create(cliente);
 
     }
 
-    public void deleteFabricante(int id) {
+    public void replace(Cliente cliente) {
 
-        fabricanteDAO.delete(id);
+        clienteDAO.update(cliente);
+
+    }
+
+    public void delete(int id) {
+
+        clienteDAO.delete(id);
 
     }
 

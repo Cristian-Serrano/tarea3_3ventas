@@ -5,6 +5,67 @@
     <title>Clientes</title>
 </head>
 <body>
+    <div th:fragment="formField (cliente, crear)">
+        <div>
+            <h1 th:text="#{clientes}"></h1>
+        </div>
+        <form id="boton_crear" action="/clientes/crear">
+            <input th:value="#{crear}" type="button">
+        </form>
+        <div id="tabla">
+            <div id="cabecera">
+                <div class="cabecera id">
+                    <h2>ID</h2>
+                </div>
+                <div class="cabecera nombre">
+                    <h2>Nombre</h2>
+                </div>
+                <div class="cabecera apellido1">
+                    <h2>Apellido 1</h2>
+                </div>
+                <div class="cabecera apellido2">
+                    <h2>Apellido 2</h2>
+                </div>
+                <div class="cabecera ciudad">
+                    <h2>Ciudad</h2>
+                </div>
+                <div class="cabecera categoria">
+                    <h2>Categoría</h2>
+                </div>
+            </div>
 
+            <div th:each="cliente : ${listaClientes}" class="fila">
+                <div class="columna id">
+                    <p th:text="${cliente.id}"></p>
+                </div>
+                <div class="columna nombre">
+                    <p th:text="${cliente.nombre}"></p>
+                </div>
+                <div class="columna apellido1">
+                    <p th:text="${cliente.apellido1}"></p>
+                </div>
+                <div class="columna apellido2">
+                    <p th:text="${cliente.apellido2}"></p>
+                </div>
+                <div class="columna ciudad">
+                    <p th:text="${cliente.ciudad}"></p>
+                </div>
+                <div class="columna categoria">
+                    <p th:text="${cliente.categoria}"></p>
+                </div>
+                <div class="columna">
+                    <form class="form_detalle" action="">
+                        <input th:value="#{detalle}" type="button">
+                    </form>
+                    <form class="form_update" action="">
+                        <input th:value="#{update}" type="button">
+                    </form>
+                    <form class="form_delete" action="">
+                        <input th:value="#{delete}" type="button">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
