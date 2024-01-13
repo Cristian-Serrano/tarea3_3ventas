@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:insert="fragments/general.html :: headerlines">
     <meta charset="UTF-8">
     <title>Clientes</title>
-    <link rel="stylesheet" href="">
+
 </head>
 <body>
-    <div th:fragment="formField (cliente, crear)">
+    <div id="main" th:fragment="formField (cliente, crear)">
         <div>
             <h1 th:text="#{clientes}"></h1>
         </div>
@@ -54,7 +54,7 @@
                 <div class="columna categoria">
                     <p th:text="${cliente.categoria}"></p>
                 </div>
-                <div class="columna">
+                <div class="columna botones">
                     <form class="form_detalle" action="">
                         <input th:value="#{detalle}" type="button">
                     </form>
