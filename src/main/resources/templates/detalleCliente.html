@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle</title>
+    <link rel="stylesheet" href="css/stylesdetalle.css">
+</head>
+<body>
+    <div th:object="${cliente}">
+        <div id="id">
+            <p th:text="'Id:' *{id}"></p>
+        </div>
+        <div id="nombre">
+            <p th:text="'Nombre:' ${cliente.nombre}"></p>
+        </div>
+        <div id="apellido1">
+            <p th:text="'Apellido 1:' ${cliente.apellido1}"></p>
+        </div>
+        <div id="apellido2">
+            <p th:text="'Apellido 2:' ${cliente.apellido2}"></p>
+        </div>
+        <div id="ciudad">
+            <p th:text="'Ciudad:' ${cliente.ciudad}"></p>
+        </div>
+        <div id="categoria">
+            <p th:text="'Categoría:' ${cliente.categoria}"></p>
+        </div>
+        <div>
+            <form class="form_listado" action="">
+                <input th:value="Ok" type="button">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
