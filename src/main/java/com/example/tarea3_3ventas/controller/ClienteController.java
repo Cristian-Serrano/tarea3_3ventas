@@ -30,4 +30,11 @@ public class ClienteController {
 
         return "detalleCliente";
     }
+
+    @GetMapping({"/cambiar/{id}","/update/{id}"})
+    public String cambiar(Model model, @PathVariable Integer id ){
+        model.addAttribute("cliente", clienteService.one(id));
+
+        return "detalleCliente";
+    }
 }

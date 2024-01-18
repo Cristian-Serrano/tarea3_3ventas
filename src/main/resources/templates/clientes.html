@@ -56,14 +56,14 @@
                     <p th:text="${cliente.categoria}"></p>
                 </div>
                 <div class="columna botones">
-                    <form class="form_detalle" action="">
-                        <input th:value="#{detalle}" type="button">
+                    <form class="form_detalle" th:action="@{/clientes/__${cliente.id}__}">
+                        <input th:value="#{detalle}" type="submit">
                     </form>
                     <form class="form_update" action="">
-                        <input th:value="#{update}" type="button">
+                        <input th:value="#{update}" type="submit">
                     </form>
                     <form class="form_delete" action="">
-                        <input th:value="#{delete}" type="button">
+                        <input th:value="#{delete}" type="submit">
                     </form>
                 </div>
             </div>
