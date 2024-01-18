@@ -2,9 +2,11 @@ package com.example.tarea3_3ventas.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Comercial {
     private int id;
     private String nombre;

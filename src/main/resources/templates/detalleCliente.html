@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalle</title>
-    <link rel="stylesheet" href="/css/stylesdetalle.css">
+    <link rel="stylesheet" href="/css/stylesDetalleCliente.css">
 </head>
 <body>
     <div id="contenedor" th:object="${cliente}">
@@ -31,11 +31,9 @@
             <p>Categoria: </p>
             <p th:text="*{categoria}"></p>
         </div>
-        <div>
-            <form class="form_listado" th:action="@{/clientes}">
-                <input th:value="Volver" type="submit">
-            </form>
-        </div>
+        <form class="form_listado" th:action="@{/clientes}" method="get">
+            <input th:value="Volver" type="submit">
+        </form>
     </div>
 
 </body>

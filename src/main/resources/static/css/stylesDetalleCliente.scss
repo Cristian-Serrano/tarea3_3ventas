@@ -1,4 +1,6 @@
 #contenedor{
+  margin:0 auto;
+  max-width:1300px;
   div{
     display: grid;
     grid-template-columns: 100px auto;

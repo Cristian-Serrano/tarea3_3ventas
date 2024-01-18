@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear cliente</title>
+    <link rel="stylesheet" href="/css/stylesCrearCliente.css">
+</head>
+<body>
+<div id="contenedor">
+    <h1>Crear cliente</h1>
+    <form th:action="@{/clientes/crear}" method="post">
+
+        <div class="input" id="nombre">
+            <p>Nombre: </p>
+            <div>
+                <input type="text"/>
+            </div>
+
+        </div>
+        <div class="input" id="apellido1">
+            <p>Apellido 1: </p>
+            <div>
+                <input type="text"/>
+            </div>
+
+        </div>
+        <div class="input" id="apellido2">
+            <p>Apellido 2: </p>
+            <div>
+                <input type="text"/>
+            </div>
+
+        </div>
+        <div class="input" id="ciudad">
+            <p>Ciudad: </p>
+            <div>
+                <input type="text"/>
+            </div>
+
+        </div>
+        <div class="input" id="categoria">
+            <p>Categoria: </p>
+            <div>
+                <input type="number"/>
+            </div>
+
+        </div>
+        <div id="submit">
+            <input value="Enviar" type="submit">
+        </div>
+    </form>
+</div>
+</body>
+</html>

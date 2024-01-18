@@ -3,7 +3,7 @@
   max-width:1300px;
   #tabla{
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr;
 
     #cabecera{
       padding:0 15px;
