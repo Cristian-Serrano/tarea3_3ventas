@@ -1,0 +1,45 @@
+#contenedor{
+  margin:0 auto;
+  max-width:1300px;
+
+  display: grid;
+  justify-items: center;
+  form{
+    display: grid;
+
+    grid-template-columns: auto min-content;
+    justify-items: center;
+
+    column-gap: 10px;
+    .input{
+      display: grid;
+      grid-template-columns: 100px minmax(auto,200px);
+
+      grid-column: 1 / 2;
+
+      div{
+        display: grid;
+        align-items: center;
+        input{
+          max-width: 200px;
+        }
+      }
+
+    }
+    #submit {
+      display: grid;
+      align-items: center;
+
+      grid-column: 2 / 3;
+      grid-row: 4 / 5;
+
+      input{
+        background-color: #79a6f1;
+      }
+
+      input:hover{
+        background-color: #a1c2e8;
+      }
+    }
+  }
+}

@@ -21,22 +21,22 @@ public class ComercialService {
     }
 
     public Comercial one(Integer id) {
-        Optional<Comercial> optCli = comercialDAO.find(id);
-        if (optCli.isPresent())
-            return optCli.get();
+        Optional<Comercial> optCo = comercialDAO.find(id);
+        if (optCo.isPresent())
+            return optCo.get();
         else
             return null;
     }
 
-    public void create(Comercial cliente) {
+    public void create(Comercial comercial) {
 
-        comercialDAO.create(cliente);
+        comercialDAO.create(comercial);
 
     }
 
-    public void replace(Comercial cliente) {
+    public void replace(Comercial comercial) {
 
-        comercialDAO.update(cliente);
+        comercialDAO.update(comercial);
 
     }
 

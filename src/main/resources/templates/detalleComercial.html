@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle</title>
+    <link rel="stylesheet" href="/css/stylesDetalleComercial.css">
+</head>
+<body>
+<div id="contenedor" th:object="${comercial}">
+    <div id="contenido">
+        <div id="id">
+            <p>Id: </p>
+            <p th:text="*{id}"></p>
+        </div>
+        <div id="nombre">
+            <p>Nombre: </p>
+            <p th:text="*{nombre}"></p>
+        </div>
+        <div id="apellido1">
+            <p>Apellido 1: </p>
+            <p th:text="*{apellido1}"></p>
+        </div>
+        <div id="apellido2">
+            <p>Apellido 2: </p>
+            <p th:text="*{apellido2}"></p>
+        </div>
+        <div id="comision">
+            <p>Ciudad: </p>
+            <p th:text="*{comision}"></p>
+        </div>
+        <form class="form_listado" th:action="@{/comerciales}" method="get">
+            <input th:value="Volver" type="submit">
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

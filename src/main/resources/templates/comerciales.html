@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:insert="fragments/general.html :: headerlines">
+<head>
     <meta charset="UTF-8">
     <title>Clientes</title>
+    <link rel="stylesheet" href="/css/stylesComerciales.css">
 
 </head>
 <body>
@@ -16,6 +17,7 @@
     <div id="tabla">
 
         <div id="cabecera">
+            
             <div class="cabecera id">
                 <h2>ID</h2>
             </div>
@@ -28,41 +30,36 @@
             <div class="cabecera apellido2">
                 <h2>Apellido 2</h2>
             </div>
-            <div class="cabecera ciudad">
-                <h2>Ciudad</h2>
+            <div class="cabecera comision">
+                <h2>Comisión</h2>
             </div>
-            <div class="cabecera categoria">
-                <h2>Categoría</h2>
-            </div>
+
         </div>
 
-        <div th:each="cliente : ${listaClientes}" class="fila">
+        <div th:each="comercial : ${listaComerciales}" class="fila">
             <div class="columna id">
-                <p th:text="${cliente.id}"></p>
+                <p th:text="${comercial.id}"></p>
             </div>
             <div class="columna nombre">
-                <p th:text="${cliente.nombre}"></p>
+                <p th:text="${comercial.nombre}"></p>
             </div>
             <div class="columna apellido1">
-                <p th:text="${cliente.apellido1}"></p>
+                <p th:text="${comercial.apellido1}"></p>
             </div>
             <div class="columna apellido2">
-                <p th:text="${cliente.apellido2}"></p>
+                <p th:text="${comercial.apellido2}"></p>
             </div>
-            <div class="columna ciudad">
-                <p th:text="${cliente.ciudad}"></p>
-            </div>
-            <div class="columna categoria">
-                <p th:text="${cliente.categoria}"></p>
+            <div class="columna comision">
+                <p th:text="${comercial.comision}"></p>
             </div>
             <div class="columna botones">
-                <form class="form_detalle" th:action="@{/comerciales/__${cliente.id}__}" method="get">
+                <form class="form_detalle" th:action="@{/comerciales/__${comercial.id}__}" method="get">
                     <input th:value="#{detalle}" type="submit">
                 </form>
-                <form class="form_update" th:action="@{/comerciales/editar/__${cliente.id}__}" method="get">
+                <form class="form_update" th:action="@{/comerciales/editar/__${comercial.id}__}" method="get">
                     <input th:value="#{update}" type="submit">
                 </form>
-                <form class="form_delete" th:action="@{/comerciales/borrar/__${cliente.id}__}" method="post">
+                <form class="form_delete" th:action="@{/comerciales/borrar/__${comercial.id}__}" method="post">
                     <input th:value="#{delete}" type="submit">
                 </form>
             </div>

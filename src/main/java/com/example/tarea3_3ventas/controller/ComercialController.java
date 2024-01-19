@@ -38,7 +38,7 @@ public class ComercialController {
     }
 
     @PostMapping({"comerciales/crear","commercials/create"})
-    public RedirectView submitCrear(Model model, Comercial comercial){
+    public RedirectView submitCrear(Model model,@ModelAttribute("comercial") Comercial comercial){
 
         comercialService.create(comercial);
 
