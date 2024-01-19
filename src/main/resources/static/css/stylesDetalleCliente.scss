@@ -1,8 +1,38 @@
 #contenedor{
   margin:0 auto;
   max-width:1300px;
-  div{
+
+  display: grid;
+  justify-items: center;
+
+  #contenido{
     display: grid;
-    grid-template-columns: 100px auto;
+
+    grid-template-columns: min-content min-content;
+    justify-items: center;
+
+    column-gap: 10px;
+    div{
+      display: grid;
+      grid-template-columns: 100px minmax(auto,200px);
+
+      grid-column: 1 / 2;
+    }
+
+    form{
+      grid-column: 2 / 3;
+      grid-row: 6 / 7;
+
+      display: grid;
+      align-items: center;
+
+      input{
+        background-color: #79a6f1;
+      }
+
+      input:hover{
+        background-color: #a1c2e8;
+      }
+    }
   }
 }
