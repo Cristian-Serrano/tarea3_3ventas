@@ -84,7 +84,7 @@ public class ComercialDAOImpl implements ComercialDAO {
 														nombre = ?, 
 														apellido1 = ?, 
 														apellido2 = ?,
-														comision = ?,
+														comision = ?
 												WHERE id = ?
 										""", comercial.getNombre()
                 , comercial.getApellido1()

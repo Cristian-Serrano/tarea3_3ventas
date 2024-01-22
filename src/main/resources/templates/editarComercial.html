@@ -7,12 +7,12 @@
 </head>
 <body>
 <div id="contenedor">
-    <h1>Actualizar cliente</h1>
-    <form th:action="@{/clientes/editar/__${cliente.id}__}" th:object="${cliente}" method="post">
+    <h1>Actualizar comercial</h1>
+    <form th:action="@{/comerciales/editar/__${comercial.id}__}" th:object="${comercial}" method="post">
 
         <div class="input" id="id">
             <p>Id: </p>
-            <p th:text="*{id}"></p>
+            <p th:field="*{id}" th:text="*{id}"></p>
         </div>
         <div class="input" id="nombre">
             <p>Nombre: </p>
@@ -35,20 +35,14 @@
             </div>
 
         </div>
-        <div class="input" id="ciudad">
-            <p>Ciudad: </p>
+        <div class="input" id="comision">
+            <p>Comision: </p>
             <div>
-                <input th:field="*{ciudad}" value="ciudad" type="text"/>
+                <input th:field="*{comision}" value="comision" type="text"/>
             </div>
 
         </div>
-        <div class="input" id="categoria">
-            <p>Categoria: </p>
-            <div>
-                <input th:field="*{categoria}" value="categoria" type="number"/>
-            </div>
 
-        </div>
         <div id="submit">
             <input th:value="Enviar" type="submit">
         </div>
