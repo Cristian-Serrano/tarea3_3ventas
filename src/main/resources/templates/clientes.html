@@ -2,7 +2,7 @@
 <html lang="en">
 <head th:insert="fragments/general.html :: headerlines">
     <meta charset="UTF-8">
-    <title>Clientes</title>
+    <title th:text="#{clientes}"></title>
 
 </head>
 <body>
@@ -20,19 +20,19 @@
                     <h2>ID</h2>
                 </div>
                 <div class="cabecera nombre">
-                    <h2>Nombre</h2>
+                    <h2 th:text="#{Nombre}"></h2>
                 </div>
                 <div class="cabecera apellido1">
-                    <h2>Apellido 1</h2>
+                    <h2 th:text="#{Apellido1}"></h2>
                 </div>
                 <div class="cabecera apellido2">
-                    <h2>Apellido 2</h2>
+                    <h2 th:text="#{Apellido2}"></h2>
                 </div>
                 <div class="cabecera ciudad">
-                    <h2>Ciudad</h2>
+                    <h2 th:text="#{Ciudad}"></h2>
                 </div>
                 <div class="cabecera categoria">
-                    <h2>Categoría</h2>
+                    <h2 th:text="#{Categoria}"></h2>
                 </div>
             </div>
 

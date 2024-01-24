@@ -15,42 +15,42 @@
             <p th:text="*{id}"></p>
         </div>
         <div class="input" id="nombre">
-            <p>Nombre: </p>
+            <p th:text="#{Nombre}">Nombre: </p>
             <div>
                 <input th:field="*{nombre}" value="nombre" type="text"/>
             </div>
 
         </div>
         <div class="input" id="apellido1">
-            <p>Apellido 1: </p>
+            <p th:text="#{Apellido1}">Apellido 1: </p>
             <div>
                 <input th:field="*{apellido1}" value="apellido1" type="text"/>
             </div>
 
         </div>
         <div class="input" id="apellido2">
-            <p>Apellido 2: </p>
+            <p th:text="#{Apellido2}">Apellido 2: </p>
             <div>
                 <input th:field="*{apellido2}" value="apellido2" type="text"/>
             </div>
 
         </div>
         <div class="input" id="ciudad">
-            <p>Ciudad: </p>
+            <p th:text="#{Ciudad}">Ciudad: </p>
             <div>
                 <input th:field="*{ciudad}" value="ciudad" type="text"/>
             </div>
 
         </div>
         <div class="input" id="categoria">
-            <p>Categoria: </p>
+            <p th:text="#{Categoria}">Categoria: </p>
             <div>
                 <input th:field="*{categoria}" value="categoria" type="number"/>
             </div>
 
         </div>
         <div id="submit">
-            <input th:value="Enviar" type="submit">
+            <input th:value="#{Enviar}" type="submit">
         </div>
     </form>
 </div>
