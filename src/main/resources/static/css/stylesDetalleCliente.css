@@ -1,0 +1,31 @@
+#contenedor {
+  margin: 0 auto;
+  max-width: 1300px;
+  display: grid;
+  justify-items: center;
+}
+#contenedor #contenido {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  justify-items: center;
+  column-gap: 10px;
+}
+#contenedor #contenido div {
+  display: grid;
+  grid-template-columns: 100px minmax(auto, 200px);
+  grid-column: 1/2;
+}
+#contenedor #contenido form {
+  grid-column: 2/3;
+  grid-row: 6/7;
+  display: grid;
+  align-items: center;
+}
+#contenedor #contenido form input {
+  background-color: #79a6f1;
+}
+#contenedor #contenido form input:hover {
+  background-color: #a1c2e8;
+}
+
+/*# sourceMappingURL=stylesDetalleCliente.css.map */

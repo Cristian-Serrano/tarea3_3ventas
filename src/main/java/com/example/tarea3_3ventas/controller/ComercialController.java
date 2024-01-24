@@ -48,6 +48,7 @@ public class ComercialController {
     @GetMapping({"/comerciales/{id}","/commercials/{id}"})
     public String detalle(Model model, @PathVariable Integer id ){
         model.addAttribute("comercial", comercialService.one(id));
+        model.addAttribute("listaPedidos",comercialService.listPed(id));
 
         return "detalleComercial";
     }

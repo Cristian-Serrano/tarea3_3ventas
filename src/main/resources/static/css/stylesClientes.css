@@ -1,0 +1,46 @@
+#main {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+#main #tabla {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+#main #tabla #cabecera {
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(6, 11.4285714286%);
+}
+#main #tabla .fila {
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(6, 11.4285714286%) 1fr;
+}
+#main #tabla .fila .botones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(10px, max-content));
+  column-gap: 10px;
+  justify-items: center;
+  align-items: center;
+}
+#main #tabla .fila .botones .form_detalle {
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+#main #tabla .fila .botones .form_update {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+#main #tabla .fila .botones .form_delete {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+#main #tabla .fila .botones form input {
+  margin: 0;
+}
+#main #tabla .fila:hover {
+  background-color: aquamarine;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=stylesClientes.css.map */

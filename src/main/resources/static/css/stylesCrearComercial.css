@@ -1,0 +1,38 @@
+#contenedor {
+  margin: 0 auto;
+  max-width: 1300px;
+  display: grid;
+  justify-items: center;
+}
+#contenedor form {
+  display: grid;
+  grid-template-columns: auto min-content;
+  justify-items: center;
+  column-gap: 10px;
+}
+#contenedor form .input {
+  display: grid;
+  grid-template-columns: 100px minmax(auto, 200px);
+  grid-column: 1/2;
+}
+#contenedor form .input div {
+  display: grid;
+  align-items: center;
+}
+#contenedor form .input div input {
+  max-width: 200px;
+}
+#contenedor form #submit {
+  display: grid;
+  align-items: center;
+  grid-column: 2/3;
+  grid-row: 4/5;
+}
+#contenedor form #submit input {
+  background-color: #79a6f1;
+}
+#contenedor form #submit input:hover {
+  background-color: #a1c2e8;
+}
+
+/*# sourceMappingURL=stylesCrearComercial.css.map */

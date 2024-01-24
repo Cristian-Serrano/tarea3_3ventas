@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 public class PedidoController {
-    @Autowired
+    /*@Autowired
     private ComercialService comercialService;
 
     @GetMapping({"/comerciales", "/commercials"})
@@ -72,5 +72,5 @@ public class PedidoController {
         comercialService.delete(id);
 
         return new RedirectView("/comerciales");
-    }
+    }*/
 }

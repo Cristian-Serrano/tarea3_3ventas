@@ -1,5 +1,6 @@
 package com.example.tarea3_3ventas.dao;
 
+import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Pedido;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface PedidoDAO {
 
     public List<Pedido> getAll();
 
-    public List<Pedido> getPedByIdCommercial();
+    public List<Pedido> getPedByIdCommercial(int comercialId);
     public Optional<Pedido> find(int id);
 
     public void update(Pedido pedido);

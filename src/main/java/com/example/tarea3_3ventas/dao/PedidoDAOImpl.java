@@ -1,5 +1,6 @@
 package com.example.tarea3_3ventas.dao;
 
+import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Pedido;
 import com.example.tarea3_3ventas.domain.Pedido;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,22 @@ public class PedidoDAOImpl implements PedidoDAO {
                         rs.getInt("id_comercial")
 
                 )
+        );
+
+        log.info("Devueltos {} registros.", listPedidos.size());
+
+        return listPedidos;
+    }
+
+    public List<Pedido> getPedByIdCommercial(int comercialId){
+        List<Pedido> listPedidos = jdbcTemplate.query(
+                "SELECT * FROM pedido WHERE pedido.id_comercial = ?",
+                (rs, rowNum) -> new Pedido(rs.getInt("id"),
+                        rs.getDouble("total"),
+                        rs.getDate("fecha"),
+                        rs.getInt("id_cliente"),
+                        rs.getInt("id_comercial")),
+                comercialId
         );
 
         log.info("Devueltos {} registros.", listPedidos.size());
