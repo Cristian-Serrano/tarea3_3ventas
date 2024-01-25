@@ -54,4 +54,16 @@ public class ComercialService {
         comercialDAO.delete(id);
 
     }
+
+    public Double total(Comercial comercial){
+        Optional<Double> maximoOpt = listPed(comercial.getId()).stream()
+                .map(p -> p.getTotal())
+                .reduce(Double::max);
+
+        return maximoOpt.get();
+    }
+
+    public Double media(Comercial comercial){
+
+    }
 }

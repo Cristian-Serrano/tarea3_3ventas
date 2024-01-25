@@ -1,6 +1,8 @@
 package com.example.tarea3_3ventas.controller;
 
 import com.example.tarea3_3ventas.domain.Comercial;
+import com.example.tarea3_3ventas.dto.ComercialDTO;
+import com.example.tarea3_3ventas.mapstruct.ComercialMapper;
 import com.example.tarea3_3ventas.service.ClienteService;
 import com.example.tarea3_3ventas.service.ComercialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ import java.util.List;
 public class ComercialController {
     @Autowired
     private ComercialService comercialService;
+
+    @Autowired
+    private ComercialMapper comercialMapper;
 
     @GetMapping({"/comerciales", "/commercials"})
     public String listar(Model model){
@@ -47,8 +52,13 @@ public class ComercialController {
 
     @GetMapping({"/comerciales/{id}","/commercials/{id}"})
     public String detalle(Model model, @PathVariable Integer id ){
-        model.addAttribute("comercial", comercialService.one(id));
         model.addAttribute("listaPedidos",comercialService.listPed(id));
+
+        Comercial comercial = comercialService.one(id);
+
+        model.addAttribute("comercial", comercial);
+
+        ComercialDTO comercialDTO = comercialMapper.comercialAComercialDTO(comercial, comercialService.total(), comercialService.media());
 
         return "detalleComercial";
     }
