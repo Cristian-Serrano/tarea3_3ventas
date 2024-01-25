@@ -3,6 +3,7 @@ package com.example.tarea3_3ventas.service;
 import com.example.tarea3_3ventas.dao.ComercialDAO;
 import com.example.tarea3_3ventas.dao.PedidoDAO;
 import com.example.tarea3_3ventas.domain.Comercial;
+import com.example.tarea3_3ventas.domain.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,11 @@ public class ComercialService {
     }
 
     public Double media(Comercial comercial){
+        Double media = listPed(comercial.getId()).stream()
+                .mapToDouble((Pedido p) -> {return p.getTotal();})
+                .average()
+                .orElse(-1);
 
+        return media;
     }
 }

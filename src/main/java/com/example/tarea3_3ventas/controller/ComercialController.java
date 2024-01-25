@@ -56,10 +56,9 @@ public class ComercialController {
 
         Comercial comercial = comercialService.one(id);
 
-        model.addAttribute("comercial", comercial);
+        ComercialDTO comercialDTO = comercialMapper.comercialAComercialDTO(comercial, comercialService.total(comercial), comercialService.media(comercial));
 
-        ComercialDTO comercialDTO = comercialMapper.comercialAComercialDTO(comercial, comercialService.total(), comercialService.media());
-
+        model.addAttribute("comercialDTO", comercialDTO);
         return "detalleComercial";
     }
 

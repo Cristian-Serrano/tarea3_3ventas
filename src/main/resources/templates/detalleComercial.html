@@ -6,27 +6,35 @@
     <link rel="stylesheet" href="/css/stylesDetalleComercial.css">
 </head>
 <body>
-<div id="contenedor" th:object="${comercial}">
+<div id="contenedor" th:object="${comercialDTO}">
     <div id="contenido">
         <div id="id">
             <p>Id: </p>
             <p th:text="*{id}"></p>
         </div>
         <div id="nombre">
-            <p>Nombre: </p>
+            <p th:text="#{Nombre}">Nombre: </p>
             <p th:text="*{nombre}"></p>
         </div>
         <div id="apellido1">
-            <p>Apellido 1: </p>
+            <p th:text="#{Apellido1}">Apellido 1: </p>
             <p th:text="*{apellido1}"></p>
         </div>
         <div id="apellido2">
-            <p>Apellido 2: </p>
+            <p th:text="#{Apellido2}">Apellido 2: </p>
             <p th:text="*{apellido2}"></p>
         </div>
         <div id="comision">
-            <p>Comisión: </p>
+            <p th:text="#{Comision}">Comisión: </p>
             <p th:text="*{comision}"></p>
+        </div>
+        <div id="total">
+            <p th:text="#{Total}">total: </p>
+            <p th:text="*{total} + ' €'"></p>
+        </div>
+        <div id="media">
+            <p th:text="#{Media}">media: </p>
+            <p th:text="*{media} + ' €'"></p>
         </div>
         <div id="pedidos" th:object="${listaPedidos}" >
             <h3>Lista de pedidos: </h3>
