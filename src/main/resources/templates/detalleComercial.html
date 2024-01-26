@@ -7,6 +7,7 @@
 </head>
 <body>
 <div id="contenedor" th:object="${comercialDTO}">
+    <h1>Detalle de comercial</h1>
     <div id="contenido">
         <div id="id">
             <p>Id: </p>
@@ -43,15 +44,23 @@
                 <p>Fecha</p>
                 <p>Id de cliente</p>
             </div>
-            <div th:each="pedido : ${listaPedidos}">
+            <div th:each="pedido : ${listaPedidos}"
+                 th:class="${pedido.total.equals(comercialDTO.maximoPedido) ? 'maximo' : pedido.total.equals(comercialDTO.minimoPedido) ? 'minimo': ''}">
                 <p th:text="${pedido.total}"></p>
                 <p th:text="${pedido.fecha}"></p>
                 <p><a th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a></p>
 
-
             </div>
 
         </div>
+        <p class="maximo"
+        th:text="#{pedidoMaximo}">
+            Verde = pedido máximo
+        </p>
+        <p class="minimo"
+           th:text="#{pedidoMinimo}">
+            Amarillo = pedido mínimo
+        </p>
         <form class="form_listado" th:action="@{/comerciales}" method="get">
             <input th:value="#{OK}" type="submit">
         </form>

@@ -57,11 +57,14 @@ public class ComercialService {
     }
 
     public Double total(Comercial comercial){
-        Optional<Double> maximoOpt = listPed(comercial.getId()).stream()
+        Optional<Double> totalOpt = listPed(comercial.getId()).stream()
                 .map(p -> p.getTotal())
-                .reduce(Double::max);
+                .reduce((a, b) -> a + b);
 
-        return maximoOpt.get();
+        /* Redondeo */
+        Double total = Math.round(totalOpt.orElse(0.0) * 100.0) / 100.0;
+
+        return total;
     }
 
     public Double media(Comercial comercial){
@@ -70,6 +73,25 @@ public class ComercialService {
                 .average()
                 .orElse(-1);
 
+        /* Redondeo */
+        media = Math.round(media * 100.0) / 100.0;
+
         return media;
+    }
+
+    public Double maximoPedido(Comercial comercial){
+        Optional<Double> maximoOpt = listPed(comercial.getId()).stream()
+                .map(p -> p.getTotal())
+                .reduce(Double::max);
+
+        return maximoOpt.orElse(0.0);
+    }
+
+    public Double minimoPedido(Comercial comercial){
+        Optional<Double> minimoOpt = listPed(comercial.getId()).stream()
+                .map(p -> p.getTotal())
+                .reduce(Double::min);
+
+        return minimoOpt.orElse(0.0);
     }
 }

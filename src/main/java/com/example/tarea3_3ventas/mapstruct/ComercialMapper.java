@@ -10,7 +10,7 @@ public interface ComercialMapper {
 
 //    @Mapping(target = "media", source = "media")
 //    @Mapping(target = "total", source = "total")
-    public ComercialDTO comercialAComercialDTO(Comercial comercial, Double total,Double media);
+    public ComercialDTO comercialAComercialDTO(Comercial comercial, Double total,Double media, Double maximoPedido, Double minimoPedido);
 
 
     public Comercial comercialDTOAConercial(ComercialDTO comercialDTO);

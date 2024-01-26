@@ -14,7 +14,7 @@
     column-gap: 10px;
     div{
       display: grid;
-      grid-template-columns: 100px minmax(auto,200px);
+      grid-template-columns: 200px minmax(auto,400px);
 
       grid-column: 1 / 2;
 
@@ -27,13 +27,27 @@
       }
 
       div{
+        padding:0 10px;
         display: grid;
         grid-template-columns: repeat(3,1fr);
+        row-gap: 5px;
 
         p{
           grid-row: 1 / 2;
         }
       }
+    }
+
+    .maximo{
+      background-color: #5a8827;
+    }
+
+    .minimo{
+      background-color: #bd9d41;
+    }
+
+    p.maximo, p.minimo{
+      grid-column: 1 / 2;
     }
 
     form{

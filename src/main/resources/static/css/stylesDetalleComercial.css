@@ -12,7 +12,7 @@
 }
 #contenedor #contenido div {
   display: grid;
-  grid-template-columns: 100px minmax(auto, 200px);
+  grid-template-columns: 200px minmax(auto, 400px);
   grid-column: 1/2;
 }
 #contenedor #contenido #pedidos {
@@ -23,11 +23,22 @@
   grid-column: 1/4;
 }
 #contenedor #contenido #pedidos div {
+  padding: 0 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  row-gap: 5px;
 }
 #contenedor #contenido #pedidos div p {
   grid-row: 1/2;
+}
+#contenedor #contenido .maximo {
+  background-color: #5a8827;
+}
+#contenedor #contenido .minimo {
+  background-color: #bd9d41;
+}
+#contenedor #contenido p.maximo, #contenedor #contenido p.minimo {
+  grid-column: 1/2;
 }
 #contenedor #contenido form {
   grid-column: 2/3;
