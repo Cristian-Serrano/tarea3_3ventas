@@ -38,7 +38,7 @@
             <p th:text="*{media} + ' €'"></p>
         </div>
         <div id="pedidos" th:object="${listaPedidos}" >
-            <h3>Lista de pedidos: </h3>
+            <h3 th:text="#{ListaDePedidos}">Lista de pedidos: </h3>
             <div>
                 <p th:text="#{Total}">Total</p>
                 <p th:text="#{Fecha}">Fecha</p>
@@ -53,8 +53,16 @@
             </div>
 
         </div>
+        <p class="maximo"
+           th:text="#{pedidoMaximo}">
+            Verde = pedido máximo
+        </p>
+        <p class="minimo"
+           th:text="#{pedidoMinimo}">
+            Amarillo = pedido mínimo
+        </p>
         <div id="clientes" th:object="${listaClientes}" >
-            <h3 th:text="">Lista de clientes: </h3>
+            <h3 th:text="#{ListaDeClientes}">Lista de clientes: </h3>
             <div>
                 <p th:text="#{Nombre}"></p>
                 <p th:text="#{Apellido1}"></p>
@@ -71,14 +79,7 @@
             </div>
 
         </div>
-        <p class="maximo"
-        th:text="#{pedidoMaximo}">
-            Verde = pedido máximo
-        </p>
-        <p class="minimo"
-           th:text="#{pedidoMinimo}">
-            Amarillo = pedido mínimo
-        </p>
+
         <form class="form_listado" th:action="@{/comerciales}" method="get">
             <input th:value="#{OK}" type="submit">
         </form>
