@@ -1,7 +1,9 @@
 package com.example.tarea3_3ventas.service;
 
+import com.example.tarea3_3ventas.dao.ClienteDAO;
 import com.example.tarea3_3ventas.dao.ComercialDAO;
 import com.example.tarea3_3ventas.dao.PedidoDAO;
+import com.example.tarea3_3ventas.domain.Cliente;
 import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class ComercialService {
     private ComercialDAO comercialDAO;
     @Autowired
     private PedidoDAO pedidoDAO;
+    @Autowired
+    private ClienteDAO clienteDAO;
 
     public List<Comercial> listAll() {
 
@@ -27,6 +31,12 @@ public class ComercialService {
     public List<com.example.tarea3_3ventas.domain.Pedido> listPed(int comercialId) {
 
         return pedidoDAO.getPedByIdCommercial(comercialId);
+
+    }
+
+    public List<Cliente> listCli(int comercialId) {
+
+        return clienteDAO.getCliByIdCommercial(comercialId);
 
     }
 

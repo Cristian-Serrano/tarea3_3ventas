@@ -3,6 +3,7 @@ package com.example.tarea3_3ventas.dao;
 import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Pedido;
 import com.example.tarea3_3ventas.domain.Pedido;
+import jdk.jshell.execution.Util;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -43,15 +44,11 @@ public class PedidoDAOImpl implements PedidoDAO {
     @Override
     public List<Pedido> getAll() {
 
-        List<Pedido> listPedidos = jdbcTemplate.query(
-                "SELECT * FROM pedido",
-                (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                        rs.getDouble("total"),
-                        rs.getDate("fecha"),
-                        rs.getInt("id_cliente"),
-                        rs.getInt("id_comercial")
-
-                )
+        List<Pedido> listPedidos = jdbcTemplate.query("""
+                            SELECT * FROM pedido p 
+                                left join cliente C on p.id_clietne = C.id 
+                                left join comercial CO on p.id_comercial = CO.id""",
+                            (rs, rowNum) -> UtilDAO.newPedido(rs)
         );
 
         log.info("Devueltos {} registros.", listPedidos.size());
@@ -60,14 +57,13 @@ public class PedidoDAOImpl implements PedidoDAO {
     }
 
     public List<Pedido> getPedByIdCommercial(int comercialId){
-        List<Pedido> listPedidos = jdbcTemplate.query(
-                "SELECT * FROM pedido WHERE pedido.id_comercial = ?",
-                (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                        rs.getDouble("total"),
-                        rs.getDate("fecha"),
-                        rs.getInt("id_cliente"),
-                        rs.getInt("id_comercial")),
-                comercialId
+        List<Pedido> listPedidos = jdbcTemplate.query("""
+                            SELECT * FROM pedido p 
+                                left join cliente C on p.id_cliente = C.id 
+                                left join comercial CO on p.id_comercial = CO.id
+                                WHERE p.id_comercial = ?""",
+                            (rs, rowNum) -> UtilDAO.newPedido(rs),
+                            comercialId
         );
 
         log.info("Devueltos {} registros.", listPedidos.size());
@@ -78,13 +74,13 @@ public class PedidoDAOImpl implements PedidoDAO {
     @Override
     public Optional<Pedido> find(int id) {
         Pedido pedido =  jdbcTemplate
-                .queryForObject("SELECT * FROM pedido WHERE id = ?"
-                        , (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                                rs.getDouble("total"),
-                                rs.getDate("fecha"),
-                                rs.getInt("id_cliente"),
-                                rs.getInt("id_comercial"))
-                        , id
+                .queryForObject("""
+                            SELECT * FROM pedido p 
+                                left join cliente C on p.id_clietne = C.id 
+                                left join comercial CO on p.id_comercial = CO.id
+                                WHERE p.id = ?""",
+                            (rs, rowNum) -> UtilDAO.newPedido(rs),
+                            id
                 );
 
         if (pedido != null) {
@@ -105,8 +101,8 @@ public class PedidoDAOImpl implements PedidoDAO {
 												WHERE id = ?
 										""", pedido.getTotal()
                 , pedido.getFecha()
-                , pedido.getId_cliente()
-                , pedido.getId_comercial()
+                , pedido.getCliente().getId()
+                , pedido.getComercial().getId()
                 , pedido.getId());
 
         log.info("Update de Pedido con {} registros actualizados.", rows);

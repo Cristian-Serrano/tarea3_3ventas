@@ -8,7 +8,7 @@ CREATE TABLE cliente (
   apellido1 VARCHAR(100) NOT NULL,
   apellido2 VARCHAR(100),
   ciudad VARCHAR(100),
-  categoría INT UNSIGNED
+  categoria INT UNSIGNED
 );
 
 CREATE TABLE comercial (

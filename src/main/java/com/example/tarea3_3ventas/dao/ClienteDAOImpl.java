@@ -1,6 +1,7 @@
 package com.example.tarea3_3ventas.dao;
 
 import com.example.tarea3_3ventas.domain.Cliente;
+import com.example.tarea3_3ventas.domain.Pedido;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -50,8 +51,23 @@ public class ClienteDAOImpl implements ClienteDAO{
                         rs.getString("apellido1"),
                         rs.getString("apellido2"),
                         rs.getString("ciudad"),
-                        rs.getInt("categoría")
+                        rs.getInt("categoria")
                 )
+        );
+
+        log.info("Devueltos {} registros.", listClientes.size());
+
+        return listClientes;
+    }
+
+    public List<Cliente> getCliByIdCommercial(int comercialId){
+        List<Cliente> listClientes = jdbcTemplate.query("""
+                            SELECT * FROM cliente C 
+                                right join pedido P on P.id_cliente = C.id 
+                                right join comercial CO on p.id_comercial = CO.id
+                                WHERE p.id_comercial = ?""",
+                (rs, rowNum) -> UtilDAO.newCliente(rs),
+                comercialId
         );
 
         log.info("Devueltos {} registros.", listClientes.size());
@@ -68,7 +84,7 @@ public class ClienteDAOImpl implements ClienteDAO{
                                 rs.getString("apellido1"),
                                 rs.getString("apellido2"),
                                 rs.getString("ciudad"),
-                                rs.getInt("categoría"))
+                                rs.getInt("categoria"))
                         , id
                 );
 
@@ -87,7 +103,7 @@ public class ClienteDAOImpl implements ClienteDAO{
 														apellido1 = ?, 
 														apellido2 = ?,
 														ciudad = ?,
-														categoría = ?  
+														categoria = ?  
 												WHERE id = ?
 										""", cliente.getNombre()
                 , cliente.getApellido1()

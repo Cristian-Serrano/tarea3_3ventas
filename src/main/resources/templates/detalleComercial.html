@@ -27,29 +27,47 @@
         </div>
         <div id="comision">
             <p th:text="#{Comision}">Comisión: </p>
-            <p th:text="*{comision}"></p>
+            <p th:text="*{comision} + ' €'"></p>
         </div>
         <div id="total">
-            <p th:text="#{Total}">total: </p>
+            <p th:text="#{TotalDePedidos}">total: </p>
             <p th:text="*{total} + ' €'"></p>
         </div>
         <div id="media">
-            <p th:text="#{Media}">media: </p>
+            <p th:text="#{MediaDePedidos}">media: </p>
             <p th:text="*{media} + ' €'"></p>
         </div>
         <div id="pedidos" th:object="${listaPedidos}" >
             <h3>Lista de pedidos: </h3>
             <div>
-                <p>Total</p>
-                <p>Fecha</p>
-                <p>Id de cliente</p>
+                <p th:text="#{Total}">Total</p>
+                <p th:text="#{Fecha}">Fecha</p>
+                <p th:text="#{NombreDeCliente}">Nombre del cliente</p>
             </div>
             <div th:each="pedido : ${listaPedidos}"
                  th:class="${pedido.total.equals(comercialDTO.maximoPedido) ? 'maximo' : pedido.total.equals(comercialDTO.minimoPedido) ? 'minimo': ''}">
-                <p th:text="${pedido.total}"></p>
+                <p th:text="${#numbers.formatDecimal(pedido.total, 1, 2)} + ' €'"></p> <!-- se redondea a dos decimales -->
                 <p th:text="${pedido.fecha}"></p>
-                <p><a th:href="@{/clientes/__${pedido.id_cliente}__}" th:text="${pedido.id_cliente}"></a></p>
+                <p><a th:href="@{/clientes/__${pedido.cliente.id}__}" th:text="${pedido.cliente.nombre}"></a></p>
 
+            </div>
+
+        </div>
+        <div id="clientes" th:object="${listaClientes}" >
+            <h3 th:text="">Lista de clientes: </h3>
+            <div>
+                <p th:text="#{Nombre}"></p>
+                <p th:text="#{Apellido1}"></p>
+                <p th:text="#{Apellido2}"></p>
+                <p th:text="#{Ciudad}"></p>
+                <p th:text="#{Categoria}"></p>
+            </div>
+            <div th:each="c : ${listaClientes}">
+                <p><a th:href="@{/clientes/__${c.id}__}" th:text="${c.nombre}"></a></p>
+                <p th:text="${c.apellido1}"></p>
+                <p th:text="${c.apellido2}"></p>
+                <p th:text="${c.ciudad}"></p>
+                <p th:text="${c.categoria}"></p>
             </div>
 
         </div>

@@ -54,6 +54,8 @@ public class ComercialController {
     public String detalle(Model model, @PathVariable Integer id ){
         model.addAttribute("listaPedidos",comercialService.listPed(id));
 
+        model.addAttribute("listaClientes",comercialService.listCli(id));
+
         Comercial comercial = comercialService.one(id);
 
         ComercialDTO comercialDTO = comercialMapper.comercialAComercialDTO(comercial,

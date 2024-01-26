@@ -21,4 +21,6 @@ public class ComercialDTO {
     private Double media;
     private Double maximoPedido;
     private Double minimoPedido;
+
+
 }
