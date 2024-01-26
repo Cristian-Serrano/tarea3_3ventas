@@ -64,8 +64,8 @@ public class ClienteDAOImpl implements ClienteDAO{
         List<Cliente> listClientes = jdbcTemplate.query("""
                             SELECT * FROM cliente C 
                                 right join pedido P on P.id_cliente = C.id 
-                                right join comercial CO on p.id_comercial = CO.id
-                                WHERE p.id_comercial = ?""",
+                                right join comercial CO on P.id_comercial = CO.id
+                                WHERE P.id_comercial = ?""",
                 (rs, rowNum) -> UtilDAO.newCliente(rs),
                 comercialId
         );
