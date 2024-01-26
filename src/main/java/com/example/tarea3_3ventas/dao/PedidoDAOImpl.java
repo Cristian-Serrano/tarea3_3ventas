@@ -31,8 +31,8 @@ public class PedidoDAOImpl implements PedidoDAO {
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("total",pedido.getTotal())
                 .addValue("fecha",pedido.getFecha())
-                .addValue("id_cliente",pedido.getId_cliente())
-                .addValue("id_comercial",pedido.getId_comercial());
+                .addValue("id_cliente",pedido.getCliente().getId())
+                .addValue("id_comercial",pedido.getComercial().getId());
         Number number = simpleJdbcInsert.executeAndReturnKey(params);
 
         pedido.setId(number.intValue());
