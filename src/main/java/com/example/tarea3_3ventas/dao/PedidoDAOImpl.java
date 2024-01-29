@@ -71,6 +71,21 @@ public class PedidoDAOImpl implements PedidoDAO {
         return listPedidos;
     }
 
+    public List<Pedido> getPedByIdCliente(int clienteId){
+        List<Pedido> listPedidos = jdbcTemplate.query("""
+                            SELECT * FROM pedido p 
+                                left join cliente C on p.id_cliente = C.id 
+                                left join comercial CO on p.id_comercial = CO.id
+                                WHERE p.id_cliente = ?""",
+                (rs, rowNum) -> UtilDAO.newPedido(rs),
+                clienteId
+        );
+
+        log.info("Devueltos {} registros.", listPedidos.size());
+
+        return listPedidos;
+    }
+
     @Override
     public Optional<Pedido> find(int id) {
         Pedido pedido =  jdbcTemplate

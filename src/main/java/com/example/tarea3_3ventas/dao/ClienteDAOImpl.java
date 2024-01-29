@@ -1,6 +1,7 @@
 package com.example.tarea3_3ventas.dao;
 
 import com.example.tarea3_3ventas.domain.Cliente;
+import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Pedido;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

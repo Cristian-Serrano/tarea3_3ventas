@@ -12,6 +12,7 @@ public interface PedidoDAO {
     public List<Pedido> getAll();
 
     public List<Pedido> getPedByIdCommercial(int comercialId);
+    public List<Pedido> getPedByIdCliente(int clienteId);
     public Optional<Pedido> find(int id);
 
     public void update(Pedido pedido);

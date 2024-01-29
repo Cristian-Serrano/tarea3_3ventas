@@ -2,9 +2,13 @@ package com.example.tarea3_3ventas.dto;
 
 import com.example.tarea3_3ventas.domain.Comercial;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
+@AllArgsConstructor
 public class ClienteDTO {
     @Min(value=1,message = "#{msg.valid.min}")
     private int id;
@@ -28,4 +32,9 @@ public class ClienteDTO {
     private int categoria;
 
     private List<Comercial> listCom;
+
+    private int pedidosTrimestre;
+    private int pedidosSemestre;
+    private int pedidosAnio;
+    private int pedidosLustro;
 }

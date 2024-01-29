@@ -2,6 +2,7 @@ package com.example.tarea3_3ventas.dao;
 
 import com.example.tarea3_3ventas.domain.Comercial;
 import com.example.tarea3_3ventas.domain.Comercial;
+import com.example.tarea3_3ventas.domain.Pedido;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -102,5 +103,21 @@ public class ComercialDAOImpl implements ComercialDAO {
         int rows = jdbcTemplate.update("DELETE FROM comercial WHERE id = ?", id);
 
         log.info("Delete de Comercial con {} registros eliminados.", rows);
+    }
+
+    @Override
+    public List<Comercial> getListComercialByIdCliente(int clienteId){
+        List<Comercial> listComerciales = jdbcTemplate.query("""
+                            SELECT * FROM comercial CO 
+                                left join pedido P on P.id_comercial = CO.id
+                                left join cliente C on P.id_cliente = C.id
+                                WHERE P.id_cliente = ?""",
+                (rs, rowNum) -> UtilDAO.newComercial(rs),
+                clienteId
+        );
+
+        log.info("Devueltos {} registros.", listComerciales.size());
+
+        return listComerciales;
     }
 }

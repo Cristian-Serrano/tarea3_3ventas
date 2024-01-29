@@ -37,4 +37,13 @@ public class UtilDAO {
                     rs.getInt("categoria")
             );
     }
+
+    public static Comercial newComercial(ResultSet rs) throws SQLException{
+        return new Comercial(rs.getInt("id"),
+                rs.getString("nombre"),
+                rs.getString("apellido1"),
+                rs.getString("apellido2"),
+                rs.getBigDecimal("comision")
+        );
+    }
 }

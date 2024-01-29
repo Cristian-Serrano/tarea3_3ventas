@@ -48,7 +48,7 @@ public class ClienteController {
 
     @GetMapping({"/clientes/{id}","/clients/{id}"})
     public String detalle(Model model, @PathVariable Integer id ){
-        model.addAttribute("cliente", clienteService.one(id));
+        model.addAttribute("clienteDTO", clienteService.clienteDTO(id));
 
         return "detalleCliente";
     }
