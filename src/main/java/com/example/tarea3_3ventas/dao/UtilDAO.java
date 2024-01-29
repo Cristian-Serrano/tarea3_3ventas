@@ -23,7 +23,7 @@ public class UtilDAO {
                         rs.getString("CO.nombre"),
                         rs.getString("CO.apellido1"),
                         rs.getString("CO.apellido2"),
-                        rs.getFloat("CO.comision")
+                        rs.getBigDecimal("CO.comision")
                 )
         );
     }
