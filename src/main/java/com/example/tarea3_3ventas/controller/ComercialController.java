@@ -5,9 +5,11 @@ import com.example.tarea3_3ventas.dto.ComercialDTO;
 import com.example.tarea3_3ventas.mapstruct.ComercialMapper;
 import com.example.tarea3_3ventas.service.ClienteService;
 import com.example.tarea3_3ventas.service.ComercialService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +45,7 @@ public class ComercialController {
     }
 
     @PostMapping({"comerciales/crear","commercials/create"})
-    public RedirectView submitCrear(Model model,@ModelAttribute("comercial") Comercial comercial){
+    public RedirectView submitCrear(@Valid @ModelAttribute("comercial") Comercial comercial, BindingResult bindingResult, Model model){
 
         comercialService.create(comercial);
 
@@ -76,7 +78,7 @@ public class ComercialController {
     }
 
     @PostMapping({"/comerciales/editar/{id}","/commercials/update/{id}"})
-    public RedirectView submitEditar(@ModelAttribute("comercial") Comercial comercial) {
+    public RedirectView submitEditar(@Valid @ModelAttribute("comercial") Comercial comercial, BindingResult bindingResult) {
 
         comercialService.replace(comercial);
 

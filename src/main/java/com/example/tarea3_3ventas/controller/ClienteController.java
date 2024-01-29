@@ -2,9 +2,11 @@ package com.example.tarea3_3ventas.controller;
 
 import com.example.tarea3_3ventas.domain.Cliente;
 import com.example.tarea3_3ventas.service.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +39,7 @@ public class ClienteController {
     }
 
     @PostMapping({"clientes/crear","clients/create"})
-    public RedirectView submitCrear(Model model, Cliente cliente){
+    public RedirectView submitCrear(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult bindingResult){
 
         clienteService.create(cliente);
 
@@ -59,7 +61,7 @@ public class ClienteController {
     }
 
     @PostMapping({"/clientes/editar/{id}","/clients/update/{id}"})
-    public RedirectView submitEditar(@ModelAttribute("cliente") Cliente cliente) {
+    public RedirectView submitEditar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult bindingResult) {
 
         clienteService.replace(cliente);
 
