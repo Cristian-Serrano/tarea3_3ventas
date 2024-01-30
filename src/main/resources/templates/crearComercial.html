@@ -14,6 +14,9 @@
             <p th:text="#{Nombre}">Nombre: </p>
             <div>
                 <input th:field="*{nombre}" type="text"/>
+                <ul class="text-danger" th:if="${#fields.hasErrors('nombre')}">
+                    <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" />
+                </ul>
             </div>
 
         </div>
@@ -21,6 +24,9 @@
             <p th:text="#{Apellido1}">Apellido 1: </p>
             <div>
                 <input th:field="*{apellido1}" type="text"/>
+                <ul class="text-danger" th:if="${#fields.hasErrors('apellido1')}">
+                    <li th:each="err : ${#fields.errors('apellido1')}" th:text="${err}" />
+                </ul>
             </div>
 
         </div>
@@ -28,6 +34,9 @@
             <p th:text="#{Apellido2}">Apellido 2: </p>
             <div>
                 <input th:field="*{apellido2}" type="text"/>
+                <ul class="text-danger" th:if="${#fields.hasErrors('apellido2')}">
+                    <li th:each="err : ${#fields.errors('apellido2')}" th:text="${err}" />
+                </ul>
             </div>
 
         </div>
@@ -35,6 +44,9 @@
             <p th:text="#{Comision}">Comision: </p>
             <div>
                 <input  th:field="*{comision}"type="text"/>
+                <ul class="text-danger" th:if="${#fields.hasErrors('comision')}">
+                    <li th:each="err : ${#fields.errors('comision')}" th:text="${err}" />
+                </ul>
             </div>
 
         </div>

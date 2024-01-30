@@ -8,7 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface ComercialMapper {
 
-//    @Mapping(target = "media", source = "media")
+    //    @Mapping(target = "media", source = "media")
 //    @Mapping(target = "total", source = "total")
     public ComercialDTO comercialAComercialDTO(Comercial comercial, Double total,Double media, Double maximoPedido, Double minimoPedido);
 
